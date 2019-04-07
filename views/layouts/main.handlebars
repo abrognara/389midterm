@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+  <title>Final Project</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+</head>
+<div class="nav">
+  <div>
+    <a href="/list">All Coasters</a>
+    <a href="/height">Tallest Coasters</a>
+    <a href="/speed">Fastest Coasters</a>
+    <a href="/age">Coasters by the Year</a>
+    <a href="/manufacturers">Manufacturers</a>
+  </div>
+</div>
+
+<body>
+  <h1>Rollercoaster Database</h1>
+  {{{ body }}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+  <script>
+    $('#search').on('input', function(e){
+      var input = $(e.target).val().toLowerCase();
+      console.log(input)
+    });
+  </script>
+</body>
+
+</html>

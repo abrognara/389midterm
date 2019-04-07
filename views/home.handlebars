@@ -1,0 +1,28 @@
+<br>
+<h3>All coasters on the site:</h3>
+<p>Sort</p>
+<input id='search' type='text'>
+<br>
+<ul>
+{{#each list}}
+    <li>{{this.name}}</li>
+    <ul>
+        <li>Year opened: {{this.opened}}</li>
+        <li>Height (ft.): {{this.height}}</li>
+        <li>Top speed (mph): {{this.maxspeed}}</li>
+        <li>Number of inversions: {{this.inversions}}</li>
+        <li>Ride length (ft.): {{this.length}}</li>
+        <li>Ride capacity (guests/hour): {{this.capacity}}</li>
+        <li>This ride was manufactured by {{this.manufac}}.</li>
+    </ul>
+    <h3>Reviews</h3>
+    <ul>
+    {{#each this.reviews}}
+        <li>
+            {{this}}
+            {{!-- {{this[Object.keys(this)[0]]}} --}}
+        </li>
+    {{/each}}
+    </ul>
+{{/each}}
+</ul>
