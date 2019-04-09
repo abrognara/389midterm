@@ -46,9 +46,9 @@ Schema:
 
 ### 2. Add New Data
 
-HTML form route: `/...`
+HTML form route: `/add`
 
-POST endpoint route: `/api/...`
+POST endpoint route: `/api/add-coaster`
 
 Example Node.js POST request to endpoint: 
 ```javascript
@@ -56,8 +56,9 @@ var request = require("request");
 
 var options = { 
     method: 'POST',
-    url: 'http://localhost:3000/api/addCoaster/:name/:opened/:height/:maxspeed/:inversions/:duration/:length/:capacity/:manufac',
-    headers: { 
+    url: 'http://localhost:3000/api/add-coaster/:name/:opened/:height/:maxspeed/:inversions/:duration/:length/:capacity/:manufac',
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded'
       'name': params.name,
       'opened': params.opened,
       'height': params.height,
@@ -91,7 +92,7 @@ request(options, function (error, response, body) {
 
 ### 3. View Data
 
-GET endpoint route: `/api/getAll`
+GET endpoint route: `/api/get-all`
 
 ### 4. Search Data
 

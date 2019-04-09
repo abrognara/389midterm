@@ -1,0 +1,19 @@
+<br>
+{{#if exists}}
+    <form method="POST" action="">
+        <fieldset>
+        <legend><h2>Add a review for {{coaster}}</h2></legend>
+        Write a review:<br>
+        <textarea type='text' name='review' rows="10" cols="80"></textarea><br>
+        Your name: <i>(optional)</i><br>
+        <input type='text' name='rname'><br>
+        <br>
+        <input type='submit' value='Submit'><br>
+        </fieldset>
+  </form>
+{{else}}
+    <fieldset>
+        <legend><h2>Add a review</h2></legend>
+        <p>A coaster with this name does not exist.</p>
+    </fieldset>
+{{/if}}

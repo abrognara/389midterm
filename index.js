@@ -42,8 +42,7 @@ app.get('/add', function(req, res) {
       'length': body.length,
       'capacity': body.capacity,
       'manufac': body.manufac,
-      // 'reviews': [{[user]: body.review}]
-      'reviews': [body.review]
+      'reviews': [{[user]: body.review}]
     };
     _DATA.push(newCoaster);
     coasterDataUtil.saveData(_DATA);
@@ -51,11 +50,11 @@ app.get('/add', function(req, res) {
   });
 });
 
-app.get('/api/getAll', function(req, res){
+app.get('/api/get-all', function(req, res){
   res.json(_DATA);
 });
 
-app.post('/api/addCoaster/:name/:opened/:height/:maxspeed/:inversions/:duration/:length/:capacity/:manufac',
+app.post('/api/add-coaster/:name/:opened/:height/:maxspeed/:inversions/:duration/:length/:capacity/:manufac',
 function(req, res) {
   var params = req.params;
 
@@ -76,10 +75,35 @@ function(req, res) {
   res.json(newCoaster);
 });
 
-app.get('/reset', function(req, res) {
-  coasterDataUtil.resetData();
-  _DATA = coasterDataUtil.loadData().coasters;
-  res.render('cleared',{});
+app.get('/add-review/:name', function(req, res){
+  var found = '';
+
+  for (coaster of _DATA) {
+    if (coaster.name === req.params.name) {
+      found = coaster.name;
+    }
+  }
+
+  if (found === '') { res.render('add-review', {exists: false, coaster: ''}) 
+  } else {
+    res.render('add-review', {exists: true, coaster: found});
+  }
+
+  app.post('/add-review/:name', function(req, res){
+    var review = req.body.review;
+    var user = req.body.rname;
+    if (user == '') { user = 'Anonymous'; }
+
+    var reviewedCoaster = {}
+    for (coaster of _DATA) {
+      if (coaster.name === found) {
+        reviewedCoaster = coaster;
+      }
+    }
+    reviewedCoaster.reviews.push({[user]: review});
+    coasterDataUtil.saveData(_DATA);
+    res.redirect('/');
+  });
 });
 
 app.get('/list', function(req, res) {
@@ -159,6 +183,32 @@ app.get('/manufacturers', function(req, res) {
 
   res.render('manufacturers', {manufacturers: names});
 });
+
+/**
+ * Reset function used for development & debugging
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+app.get('/reset', function(req, res) {
+  res.render('cleared',{});
+
+  app.post('/reset/reviews', function(req, res){
+    for (coaster of _DATA) {
+      coaster.reviews = []
+    }
+    coasterDataUtil.saveData(_DATA)
+    _DATA = coasterDataUtil.loadData().coasters;
+    res.redirect('/');
+  });
+
+  app.post('/reset/all', function(req, res){
+    coasterDataUtil.resetData();
+    _DATA = coasterDataUtil.loadData().coasters;
+    res.redirect('/');
+  });
+});
+/**
+ *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 
 app.listen(3000, function() {
   console.log('Listening on port 3000!');
