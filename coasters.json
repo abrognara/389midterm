@@ -1,1 +1,1 @@
-{"coasters":[]}
+{"coasters":[{"name":"test","opened":"2000","height":"100","maxspeed":"40","inversions":"3","duration":"90","length":"1000","capacity":"400","manufac":"Arrow","reviews":[{"Reviewer":"This is a review."},{"Anonymous":"This is another review, but with no name."}]},{"name":"El Toro","opened":"2006","height":"181","maxspeed":"70","inversions":"0","duration":"102","length":"4400","capacity":"1500","manufac":"Intamin","reviews":[]}]}

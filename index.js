@@ -120,12 +120,12 @@ app.get('/height', function(req, res) {
   for (coaster of _DATA) {
     heights.push(coaster.height);
   }
-  heights.sort();
+  heights.sort().reverse();
   var names = []
 
-  for (coaster of _DATA) {
-    for (i in heights) {
-      if (coaster.height === heights[i] && !names.includes(coaster.name)) {
+  for (i in heights) {
+    for (coaster of _DATA) {
+      if (coaster.height === heights[i]) {
         names.push(coaster.name)
       }
     }
@@ -139,12 +139,12 @@ app.get('/speed', function(req, res) {
   for (coaster of _DATA) {
     speeds.push(coaster.maxspeed);
   }
-  speeds.sort();
+  speeds.sort().reverse();
   var names = []
 
-  for (coaster of _DATA) {
-    for (i in speeds) {
-      if (coaster.maxspeed === speeds[i] && !names.includes(coaster.name)) {
+  for (i in speeds) {
+    for (coaster of _DATA) {
+      if (coaster.maxspeed === speeds[i]) {
         names.push(coaster.name)
       }
     }
@@ -158,12 +158,12 @@ app.get('/age', function(req, res) {
   for (coaster of _DATA) {
     ages.push(coaster.opened);
   }
-  ages.sort();
+  ages.sort().reverse();
   var names = []
 
-  for (coaster of _DATA) {
-    for (i in ages) {
-      if (coaster.opened === ages[i] && !names.includes(coaster.name)) {
+  for (i in ages) {
+    for (coaster of _DATA) {
+      if (coaster.opened === ages[i]) {
         names.push(coaster.name)
       }
     }

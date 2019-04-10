@@ -1,11 +1,14 @@
 <br>
-<h3>All coasters on the site:</h3>
+<h3>All coasters on the site</h3>
 <p>Sort</p>
 <input id='search' type='text'>
+<a href="/add">Click here to add a coaster to the site!</a>
 <br>
-<ul>
+
+<p id="nomatch"></p>
 {{#each list}}
-    <li>{{this.name}}</li>
+<div id='{{this.name}}' class="entry">
+    <h4>{{this.name}}</h4>
     <ul>
         <li>Year opened: {{this.opened}}</li>
         <li>Height (ft.): {{this.height}}</li>
@@ -18,7 +21,7 @@
     <br>
     <hr>
     <h3 style="display: inline">Reviews</h3>
-    <button style="display: inline; float: right">Add a review for {{this.name}}</button>
+    <button onclick="location.href='/add-review/{{this.name}}';" style="display: inline; float: right">Add a review for {{this.name}}</button>
     {{#each this.reviews as |obj|}}
         {{#each obj as |post user|}}
             <p>{{post}}</p>
@@ -27,5 +30,31 @@
         {{/each}}
         <hr>
     {{/each}}
+</div>
 {{/each}}
-</ul>
+<script>
+    $(document).ready(function(){
+        $('#nomatch').hide();
+    });
+
+    $('#search').on('input', function(e){
+      var input = $(e.target).val().toLowerCase();
+      $('#nomatch').hide();
+
+      if(input === '') {
+        $('.entry').show();
+      } else {
+        $('.entry').hide();
+        $('.entry').each(function(){
+            var coasterName = $(this).attr('id').toLowerCase();
+            var re = new RegExp("^"+input,"g");
+            if (coasterName.match(re)) {
+                $(this).show();
+            } else {
+                $('#nomatch').text('No coasters exist with the name \"'+input+'\"');
+                $('#nomatch').show();
+            }
+        });
+      }
+    });
+</script>
