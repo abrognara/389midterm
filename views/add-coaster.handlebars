@@ -2,7 +2,7 @@
   <fieldset>
     <legend><h2>Add a coaster to the site</h2></legend>
     Name:<br>
-    <input type='text' name='name'><br>
+    <input autofocus id="top" type='text' name='name'><br>
     Manufacturer:<br>
     <input type='text' name='manufac'><br>
     Year opened:<br>
@@ -27,3 +27,11 @@
     <input type='submit' value='Submit'><br>
   </fieldset>
 </form>
+<script>
+  $(document).ready(function(){
+        $('#top')[0].scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    });
+</script>

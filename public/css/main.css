@@ -1,1 +1,16 @@
-/* Please add your own! */
+.jumbotron {
+    text-align: center;
+    margin-bottom: 0 !important;
+}
+
+.navbar {
+    min-height: 70px;
+}
+
+.nav.navbar-nav li {
+    float: left;
+}
+
+.list-inline-item .a {
+    color: white !important;
+}

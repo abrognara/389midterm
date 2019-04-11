@@ -158,7 +158,7 @@ app.get('/age', function(req, res) {
   for (coaster of _DATA) {
     ages.push(coaster.opened);
   }
-  ages.sort().reverse();
+  ages.sort();
   var names = []
 
   for (i in ages) {

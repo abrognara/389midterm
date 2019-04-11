@@ -4,7 +4,7 @@
         <fieldset>
         <legend><h2>Add a review for {{coaster}}</h2></legend>
         Write a review:<br>
-        <textarea type='text' name='review' rows="10" cols="80"></textarea><br>
+        <textarea  autofocus id='body' type='text' name='review' rows="10" cols="80"></textarea><br>
         Your name: <i>(optional)</i><br>
         <input type='text' name='rname'><br>
         <br>
@@ -17,3 +17,11 @@
         <p>A coaster with this name does not exist.</p>
     </fieldset>
 {{/if}}
+<script>
+    $(document).ready(function(){
+        $('#body')[0].scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+</script>
