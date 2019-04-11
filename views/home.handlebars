@@ -1,7 +1,22 @@
+<style>
+    h3 {
+        display: inline;
+    }
+
+    button {
+        display: inline; float: right
+    }
+</style>
 <br>
 <h3>All coasters on the site</h3>
-<p>Sort</p>
-<input id='search' type='text'>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">Sort by name</span>
+  </div>
+  <div class="col-md-5" id="sort">
+      <input type="text" id='search' class="form-control" aria-describedby="basic-addon3" placeholder="Enter a coaster name">
+  </div>
+</div>
 <a href="/add" class="btn btn-success">Click here to add a coaster to the site!</a>
 <br>
 
@@ -20,8 +35,8 @@
     </ul>
     <br>
     <hr>
-    <h3 style="display: inline">Reviews</h3>
-    <button onclick="location.href='/add-review/{{this.name}}';" style="display: inline; float: right">Add a review for {{this.name}}</button>
+    <h3>Reviews</h3>
+    <button onclick="location.href='/add-review/{{this.name}}';" class="btn-primary btn-sm">Add a review for {{this.name}}</button>
     {{#each this.reviews as |obj|}}
         {{#each obj as |post user|}}
             <p>{{post}}</p>

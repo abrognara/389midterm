@@ -14,3 +14,23 @@
 .list-inline-item .a {
     color: white !important;
 }
+
+.page-footer {
+    background-color: #343a40 !important;
+}
+
+.footer-copyright {
+    background-color:#2d3338 !important;
+}
+
+.footer-list-text {
+    color: rgba(255,255,255,.5) !important;
+}
+
+.footer-copyright-text {
+    color: white !important;
+}
+
+div #sort {
+    padding-left: 0;
+}
