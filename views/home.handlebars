@@ -10,6 +10,15 @@
     div .btn {
         float: right;
     }
+
+    div .container-fluid {
+        background-color: #001a66;
+        height: 80px;
+    }
+
+    div h3 {
+        color: white;
+    }
 </style>
 <br>
 <h3>All coasters on the site</h3>
@@ -40,9 +49,10 @@
         <li>This ride was manufactured by {{this.manufac}}.</li>
     </ul>
     <br>
-    <hr>
-    <h3>Reviews</h3>
-    <button onclick="location.href='/add-review/{{this.name}}';" class="btn-primary btn-sm">Add a review for {{this.name}}</button>
+    <div class="container-fluid align-middle">
+        <h3>Reviews</h3>
+        <button onclick="location.href='/add-review/{{this.name}}';" class="btn-default btn-sm">Add a review for {{this.name}}</button>
+    </div>
     {{#each this.reviews as |obj|}}
         {{#each obj as |post user|}}
             <p>{{post}}</p>
